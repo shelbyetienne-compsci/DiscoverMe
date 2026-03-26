@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "279348218238",
+    "project_id": "discover-me-f0a95",
+    "storage_bucket": "discover-me-f0a95.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279348218238:android:24eaefa4c761ed00cc0b2f",
+        "android_client_info": {
+          "package_name": "com.example.discover_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279348218238-9o1ndefuh9mt1rahcak63bd44pl8gcvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.discover_me",
+            "certificate_hash": "e6da5cb0634c033f84684d85a932c7856be6a951"
+          }
+        },
+        {
+          "client_id": "279348218238-me97srcru0tf40jphiuev9530092fo7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjcbPG42nni7WYkyEuEjSUNOcPbq-hAWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279348218238-me97srcru0tf40jphiuev9530092fo7g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "279348218238-0v3odr04b3rot9ng1r7m6koik4t1tdfv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.discoverMe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
