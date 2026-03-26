@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreenWidget extends StatelessWidget {
   const HomeScreenWidget({super.key});
@@ -17,11 +18,27 @@ class HomeScreenWidget extends StatelessWidget {
         }
 
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('UID: ${user.uid}'),
-            Text('Email: ${user.email ?? ""}'),
-            Text('Name: ${user.displayName ?? ""}'),
+            Text('Welcome ${user.displayName ?? ""}!'),
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: () {
+                  context.goNamed(
+                    'basic-info',
+                  );
+                }, child: Text("Work")),
+                SizedBox(width: 24),
+                ElevatedButton(onPressed: () {
+                  context.goNamed(
+                    'basic-info',
+                  );
+                }, child: Text("Creative")),
+              ],
+            ),
           ],
         );
       },

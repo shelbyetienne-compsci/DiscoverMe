@@ -9,23 +9,25 @@ class AuthPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-
-        if (!snapshot.hasData) {
-          return const SignInWidget();
-        }
-
-        return HomeScreenWidget();
-      },
+    return Scaffold(
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something went wrong');
+          }
+      
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+      
+          if (!snapshot.hasData) {
+            return const SignInWidget();
+          }
+      
+          return HomeScreenWidget();
+        },
+      ),
     );
   }
 }
