@@ -1,7 +1,9 @@
 import 'link.dart';
 
 class BasicInfo {
-  final String fullName;
+  final String uid;
+  final String firstName;
+  final String lastName;
   final String headline;
   final String bio;
   final String email;
@@ -14,7 +16,9 @@ class BasicInfo {
   final List<Link> links;
 
   BasicInfo({
-    required this.fullName,
+    required this.uid,
+    required this.firstName,
+    required this.lastName,
     required this.headline,
     required this.bio,
     required this.email,
@@ -26,7 +30,9 @@ class BasicInfo {
   });
 
   BasicInfo copyWith({
-    String? fullName,
+    String? uid,
+    String? firstName,
+    String? lastName,
     String? headline,
     String? bio,
     String? email,
@@ -37,7 +43,9 @@ class BasicInfo {
     List<Link>? links,
   }) {
     return BasicInfo(
-      fullName: fullName ?? this.fullName,
+      uid: uid ?? this.uid,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
       headline: headline ?? this.headline,
       bio: bio ?? this.bio,
       email: email ?? this.email,
@@ -51,7 +59,9 @@ class BasicInfo {
 
   Map<String, dynamic> toJson() {
     return {
-      'fullName': fullName,
+      'uid': uid,
+      'firstName': firstName,
+      'lastName': lastName,
       'headline': headline,
       'bio': bio,
       'email': email,
@@ -65,7 +75,9 @@ class BasicInfo {
 
   factory BasicInfo.fromJson(Map<String, dynamic> json) {
     return BasicInfo(
-      fullName: json['fullName'] ?? '',
+      uid: json['uid'] ?? '',
+      firstName: json['firstName'] ?? '',
+      lastName: json['lastName'] ?? '',
       headline: json['headline'] ?? '',
       bio: json['bio'] ?? '',
       email: json['email'] ?? '',

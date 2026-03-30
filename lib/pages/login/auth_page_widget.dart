@@ -1,14 +1,17 @@
+import 'package:discover_me/controllers/onboarding_controller.dart';
 import 'package:discover_me/pages/login/sign_in_widget.dart';
+import 'package:discover_me/pages/onboarding/basic_info_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'home_screen_widget.dart';
 
-class AuthPageWidget extends StatelessWidget {
+class AuthPageWidget extends ConsumerWidget {
   const AuthPageWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
@@ -24,8 +27,10 @@ class AuthPageWidget extends StatelessWidget {
           if (!snapshot.hasData) {
             return const SignInWidget();
           }
-      
-          return HomeScreenWidget();
+
+          final basicInfo = ref.watch(onboardingControllerProvider).value;
+
+          return BasicInfoWidget(basicInfo: basicInfo);
         },
       ),
     );

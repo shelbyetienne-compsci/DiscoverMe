@@ -13,7 +13,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/onboarding/basic-info',
       name: 'basic-info',
-      builder: (context, state) => const BasicInfoWidget(),
+      builder: (context, state) => const BasicInfoWidget(basicInfo: null,),
     ),
     // GoRoute(
     //   path: '/onboarding/basic-info/:type',
