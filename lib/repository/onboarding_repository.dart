@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:discover_me/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/basic_info.dart';
@@ -21,10 +22,6 @@ class OnboardingRepository {
         .set(info.toJson(), SetOptions(merge: true));
   }
 }
-
-final fireStoreProvider = Provider<FirebaseFirestore>((ref) {
-  return FirebaseFirestore.instance;
-});
 
 final onBoardingRepositoryProvider = Provider<OnboardingRepository>((ref) {
   final firestore = ref.watch(fireStoreProvider);

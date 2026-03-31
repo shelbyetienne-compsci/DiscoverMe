@@ -1,4 +1,6 @@
 class Project {
+  final String id;
+
   final String title;
   final String description;
   final List<String> skills;
@@ -11,6 +13,7 @@ class Project {
   final int order;
 
   const Project({
+    required this.id,
     required this.title,
     required this.description,
     required this.skills,
@@ -22,6 +25,7 @@ class Project {
   });
 
   Project copyWith({
+    String? id,
     String? title,
     String? description,
     List<String>? skills,
@@ -32,6 +36,7 @@ class Project {
     int? order,
   }) {
     return Project(
+      id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
       skills: skills ?? this.skills,
@@ -56,8 +61,9 @@ class Project {
     };
   }
 
-  factory Project.fromJson(Map<String, dynamic> json) {
+  factory Project.fromJson(Map<String, dynamic> json, String id) {
     return Project(
+      id: id,
       title: json['title'] ?? '',
       description: json['description'] ?? '',
       skills: List<String>.from(json['skills'] ?? []),

@@ -39,38 +39,4 @@ class Portfolio {
       links: links ?? this.links,
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'basicInfo': basicInfo.toJson(),
-      'projects': projects.map((e) => e.toJson()).toList(),
-      'experiences': experiences.map((e) => e.toJson()).toList(),
-      'education': education.map((e) => e.toJson()).toList(),
-      'skills': skills.map((e) => e.toJson()).toList(),
-      'links': links.map((e) => e.toJson()).toList(),
-    };
-  }
-
-  factory Portfolio.fromJson(Map<String, dynamic> json) {
-    return Portfolio(
-      basicInfo: BasicInfo.fromJson(
-        json['basicInfo'] as Map<String, dynamic>? ?? {},
-      ),
-      projects: (json['projects'] as List<dynamic>? ?? [])
-          .map((e) => Project.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      experiences: (json['experiences'] as List<dynamic>? ?? [])
-          .map((e) => Experience.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      education: (json['education'] as List<dynamic>? ?? [])
-          .map((e) => Education.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      skills: (json['skills'] as List<dynamic>? ?? [])
-          .map((e) => Skill.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      links: (json['links'] as List<dynamic>? ?? [])
-          .map((e) => Link.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-  }
 }

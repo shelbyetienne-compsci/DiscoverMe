@@ -1,4 +1,6 @@
 class Experience {
+  final String id;
+
   final String company;
   final String role;
   final String description;
@@ -10,6 +12,7 @@ class Experience {
   final int order;
 
   const Experience({
+    required this.id,
     required this.company,
     required this.role,
     required this.description,
@@ -20,6 +23,7 @@ class Experience {
   });
 
   Experience copyWith({
+    String? id,
     String? company,
     String? role,
     String? description,
@@ -29,6 +33,7 @@ class Experience {
     int? order,
   }) {
     return Experience(
+      id: id ?? this.id,
       company: company ?? this.company,
       role: role ?? this.role,
       description: description ?? this.description,
@@ -51,8 +56,9 @@ class Experience {
     };
   }
 
-  factory Experience.fromJson(Map<String, dynamic> json) {
+  factory Experience.fromJson(Map<String, dynamic> json, String id) {
     return Experience(
+      id: id,
       company: json['company'] ?? '',
       role: json['role'] ?? '',
       description: json['description'] ?? '',

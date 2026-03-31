@@ -1,5 +1,3 @@
-import 'link.dart';
-
 class BasicInfo {
   final String uid;
   final String firstName;
@@ -13,8 +11,6 @@ class BasicInfo {
   final String? country;
   final String? profileImageUrl;
 
-  final List<Link> links;
-
   BasicInfo({
     required this.uid,
     required this.firstName,
@@ -26,7 +22,6 @@ class BasicInfo {
     this.city,
     this.country,
     this.profileImageUrl,
-    required this.links,
   });
 
   BasicInfo copyWith({
@@ -40,7 +35,6 @@ class BasicInfo {
     String? city,
     String? country,
     String? profileImageUrl,
-    List<Link>? links,
   }) {
     return BasicInfo(
       uid: uid ?? this.uid,
@@ -53,7 +47,6 @@ class BasicInfo {
       city: city ?? this.city,
       country: country ?? this.country,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
-      links: links ?? this.links,
     );
   }
 
@@ -69,7 +62,6 @@ class BasicInfo {
       'city': city,
       'country': country,
       'profileImageUrl': profileImageUrl,
-      'links': links.map((e) => e.toJson()).toList(),
     };
   }
 
@@ -85,9 +77,6 @@ class BasicInfo {
       city: json['city'],
       country: json['country'],
       profileImageUrl: json['profileImageUrl'],
-      links: (json['links'] as List<dynamic>? ?? [])
-          .map((e) => Link.fromJson(e))
-          .toList(),
     );
   }
 }

@@ -1,6 +1,6 @@
-
 import 'package:discover_me/models/basic_info.dart';
-import 'package:discover_me/providers.dart';
+import 'package:discover_me/models/project.dart';
+import 'package:discover_me/repository/portfolio_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,11 +34,11 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
     final info = widget.basicInfo;
 
     if (info != null) {
-      firstNameController.text = info.firstName ?? '';
-      lastNameController.text = info.lastName ?? '';
-      headlineController.text = info.headline ?? '';
-      bioController.text = info.bio ?? '';
-      emailController.text = info.email ?? '';
+      firstNameController.text = info.firstName;
+      lastNameController.text = info.lastName;
+      headlineController.text = info.headline;
+      bioController.text = info.bio;
+      emailController.text = info.email;
       phoneController.text = info.phone ?? '';
       cityController.text = info.city ?? '';
       countryController.text = info.country ?? '';
@@ -164,12 +164,12 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                       country: countryController.text.trim(),
                       headline: headlineController.text.trim(),
                       bio: bioController.text.trim(),
-                      links: [],
                     );
 
                     await ref
                         .read(onboardingControllerProvider.notifier)
                         .submit(info);
+
                   },
                   child: const Text('Continue'),
                 ),

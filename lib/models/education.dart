@@ -1,4 +1,6 @@
 class Education {
+  final String id;
+
   final String school;
   final String degree;
 
@@ -9,6 +11,7 @@ class Education {
   final int order;
 
   const Education({
+    required this.id,
     required this.school,
     required this.degree,
     required this.startDate,
@@ -18,6 +21,7 @@ class Education {
   });
 
   Education copyWith({
+    String? id,
     String? school,
     String? degree,
     DateTime? startDate,
@@ -26,6 +30,7 @@ class Education {
     int? order,
   }) {
     return Education(
+      id: id ?? this.id,
       school: school ?? this.school,
       degree: degree ?? this.degree,
       startDate: startDate ?? this.startDate,
@@ -46,8 +51,9 @@ class Education {
     };
   }
 
-  factory Education.fromJson(Map<String, dynamic> json) {
+  factory Education.fromJson(Map<String, dynamic> json, String id) {
     return Education(
+      id: id,
       school: json['school'] ?? '',
       degree: json['degree'] ?? '',
       startDate: DateTime.parse(json['startDate']),
