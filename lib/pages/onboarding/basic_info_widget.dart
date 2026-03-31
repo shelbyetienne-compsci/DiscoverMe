@@ -1,5 +1,6 @@
 
 import 'package:discover_me/models/basic_info.dart';
+import 'package:discover_me/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -111,7 +112,9 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                   },
                 ),
                 TextFormField(
+                  controller: emailController,
                   readOnly: true,
+                  enabled: false,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(),

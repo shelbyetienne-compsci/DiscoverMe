@@ -27,10 +27,10 @@ class AuthPageWidget extends ConsumerWidget {
           if (!snapshot.hasData) {
             return const SignInWidget();
           }
-
+          //HOME/WELCOME PAGE HERE LATER
           final basicInfo = ref.watch(onboardingControllerProvider).value;
 
-          return BasicInfoWidget(basicInfo: basicInfo);
+          return BasicInfoWidget(basicInfo: basicInfo?.copyWith(email:  snapshot.data?.email));
         },
       ),
     );
