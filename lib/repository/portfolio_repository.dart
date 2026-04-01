@@ -16,11 +16,7 @@ class PortfolioRepository {
   PortfolioRepository(this.firestore, this.auth);
 
   //PROJECTS
-  Future<void> addProject(Project project) async {
-    await _projectsRef.doc(project.id).set(project.toJson());
-  }
-
-  Future<void> updateProject(Project project) async {
+  Future<void> saveProject(Project project) async {
     await _projectsRef.doc(project.id).set(project.toJson());
   }
 
@@ -37,11 +33,7 @@ class PortfolioRepository {
   }
 
   //EXPERIENCE
-  Future<void> addExperience(Experience experience) async {
-    await _experienceRef.doc(experience.id).set(experience.toJson());
-  }
-
-  Future<void> updateExperience(Experience experience) async {
+  Future<void> saveExperience(Experience experience) async {
     await _experienceRef.doc(experience.id).set(experience.toJson());
   }
 
@@ -58,11 +50,7 @@ class PortfolioRepository {
   }
 
   //EDUCATION
-  Future<void> addEducation(Education education) async {
-    await _educationRef.doc(education.id).set(education.toJson());
-  }
-
-  Future<void> updateEducation(Education education) async {
+  Future<void> saveEducation(Education education) async {
     await _educationRef.doc(education.id).set(education.toJson());
   }
 
@@ -79,11 +67,7 @@ class PortfolioRepository {
   }
 
   //SKILLS
-  Future<void> addSkill(Skill skill) async {
-    await _skillsRef.doc(skill.id).set(skill.toJson());
-  }
-
-  Future<void> updateSkill(Skill skill) async {
+  Future<void> saveSkill(Skill skill) async {
     await _skillsRef.doc(skill.id).set(skill.toJson());
   }
 
@@ -100,11 +84,7 @@ class PortfolioRepository {
   }
 
   //LINKS
-  Future<void> addLink(Link link) async {
-    await _linksRef.doc(link.id).set(link.toJson());
-  }
-
-  Future<void> updateLink(Link link) async {
+  Future<void> saveLink(Link link) async {
     await _linksRef.doc(link.id).set(link.toJson());
   }
 
