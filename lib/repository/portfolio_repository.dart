@@ -3,6 +3,7 @@ import 'package:discover_me/models/education.dart';
 import 'package:discover_me/models/experience.dart';
 import 'package:discover_me/models/link.dart';
 import 'package:discover_me/models/project.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/skill.dart';
@@ -10,9 +11,9 @@ import '../providers.dart';
 
 class PortfolioRepository {
   final FirebaseFirestore firestore;
-  final String uid;
+  final FirebaseAuth auth;
 
-  PortfolioRepository(this.firestore, this.uid);
+  PortfolioRepository(this.firestore, this.auth);
 
   //PROJECTS
   Future<void> addProject(Project project) async {
@@ -119,29 +120,33 @@ class PortfolioRepository {
     });
   }
 
+  CollectionReference<Map<String, dynamic>> get _projectsRef => firestore
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .collection('projects');
 
-  CollectionReference<Map<String, dynamic>> get _projectsRef =>
-      firestore.collection('users').doc(uid).collection('projects');
+  CollectionReference<Map<String, dynamic>> get _experienceRef => firestore
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .collection('experiences');
 
-  CollectionReference<Map<String, dynamic>> get _experienceRef =>
-      firestore.collection('users').doc(uid).collection('experiences');
+  CollectionReference<Map<String, dynamic>> get _educationRef => firestore
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .collection('education');
 
-  CollectionReference<Map<String, dynamic>> get _educationRef =>
-      firestore.collection('users').doc(uid).collection('education');
+  CollectionReference<Map<String, dynamic>> get _skillsRef => firestore
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .collection('skills');
 
-  CollectionReference<Map<String, dynamic>> get _skillsRef =>
-      firestore.collection('users').doc(uid).collection('skills');
-
-  CollectionReference<Map<String, dynamic>> get _linksRef =>
-      firestore.collection('users').doc(uid).collection('links');
-
+  CollectionReference<Map<String, dynamic>> get _linksRef => firestore
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .collection('links');
 }
 
 final portfolioRepositoryProvider = Provider<PortfolioRepository>((ref) {
   final firestore = ref.watch(fireStoreProvider);
-  final user = ref.watch(authStateProvider).value;
-  if (user == null) {
-    throw StateError('OnboardingRepository accessed without an authenticated user.');
-  }
-  return PortfolioRepository(firestore, user.uid);
+  return PortfolioRepository(firestore, FirebaseAuth.instance);
 });
