@@ -169,7 +169,6 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                     await ref
                         .read(onboardingControllerProvider.notifier)
                         .submit(info);
-
                   },
                   child: const Text('Continue'),
                 ),

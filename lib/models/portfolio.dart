@@ -6,7 +6,7 @@ import 'skill.dart';
 import 'link.dart';
 
 class Portfolio {
-  final BasicInfo basicInfo;
+  final BasicInfo? basicInfo;
   final List<Project> projects;
   final List<Experience> experiences;
   final List<Education> education;
